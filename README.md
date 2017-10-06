@@ -1,5 +1,9 @@
 # SilverStripe Facebook feed
 
+[![Build Status](https://travis-ci.org/mak001/silverstripe-facebook-feed.svg?branch=master)](https://travis-ci.org/mak001/silverstripe-facebook-feed)
+[![codecov](https://codecov.io/gh/mak001/silverstripe-facebook-feed/branch/master/graph/badge.svg)](https://codecov.io/gh/mak001/silverstripe-facebook-feed)
+
+
 ## Overview
 
 The Facebook feed module uses Facebook's php sdk to get a page's feed.
