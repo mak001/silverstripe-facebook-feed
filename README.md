@@ -15,7 +15,7 @@ The Facebook feed module uses Facebook's php sdk to get a page's feed.
 
 ## Installation
 
-`composer require dynamic/facebook-feed`
+`composer require mak001/silverstripe-facebook-feed`
 
 Add app_id, app_secret, and default_access_token to config.yml.
 ```yml
