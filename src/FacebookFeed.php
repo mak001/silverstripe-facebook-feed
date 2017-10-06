@@ -49,10 +49,6 @@ class FacebookFeed extends DataExtension
             $limit = Config::inst()->get(FacebookFeed::class, 'defaultLimit');
         }
 
-        if (!$limit) {
-            $limit = 2;
-        }
-
         $fb = $this->createFacebookHook();
 
         try {
