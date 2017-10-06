@@ -15,7 +15,7 @@ class FacebookFeedTest extends SapphireTest
     public function setUp()
     {
         parent::setUp();
-        $app_id = getenv('api_id');
+        $app_id = getenv('app_id');
         $app_secret = getenv('app_secret');
         $default_access_token = getenv('default_access_token');
 
