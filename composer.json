@@ -23,7 +23,7 @@
 	"extra": {
 		"installer-name": "facebook-feed",
 		"branch-alias": {
-			"dev-master": "1.0.x-dev"
+			"1.0": "1.0.x-dev"
 		}
 	}
 }
