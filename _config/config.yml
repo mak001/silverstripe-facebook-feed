@@ -1,0 +1,5 @@
+---
+Name: facebook-feed
+---
+FacebookFeed:
+  defaultLimit: 2

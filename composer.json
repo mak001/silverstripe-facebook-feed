@@ -1,0 +1,29 @@
+{
+	"name": "mak001/silverstripe-facebook-feed",
+	"description": "SilverStripe Facebook Feed Module. Show a feed from FaceBook.",
+	"keywords": [
+		"silverstripe",
+		"facebook",
+		"facebook feed"
+	],
+	"type": "silverstripe-module",
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "mak001",
+			"email": "mak001001@gmail.com",
+			"homepage": "http://matthewkoerber.com"
+		}
+	],
+	"require": {
+		"silverstripe/framework": "^3.4",
+		"silverstripe/cms": "^3.4",
+		"facebook/graph-sdk": "^5.6"
+	},
+	"extra": {
+		"installer-name": "facebook-feed",
+		"branch-alias": {
+			"dev-master": "1.0.x-dev"
+		}
+	}
+}
