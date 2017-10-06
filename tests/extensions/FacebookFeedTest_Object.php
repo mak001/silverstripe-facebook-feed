@@ -18,5 +18,4 @@ class FacebookFeedTest_Object extends DataObject implements TestOnly
     private static $extensions = array(
         FacebookFeed::class
     );
-
 }

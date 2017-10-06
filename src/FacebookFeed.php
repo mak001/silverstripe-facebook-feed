@@ -26,7 +26,6 @@ class FacebookFeed extends DataExtension
         $pageField = TextField::create('FacebookPageID');
         $pageField->setRightTitle('The ID for the facebook page. Would be "foo" if the facebook url is "https://www.facebook.com/foo/"');
         $fields->addFieldToTab('Root.Main', $pageField, 'Content');
-
     }
 
     public function createFacebookHook()
@@ -79,7 +78,6 @@ class FacebookFeed extends DataExtension
             }
 
             return new ArrayData(array('Posts' => $list));
-
         } catch (FacebookResponseException $e) {
             // When Graph returns an error
             return new ArrayData(array('Error' => 'Graph returned an error: ' . $e->getMessage()));
