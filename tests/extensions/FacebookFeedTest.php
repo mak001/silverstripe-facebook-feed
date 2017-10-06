@@ -1,6 +1,12 @@
 <?php
 
-use Facebook\Exceptions\FacebookSDKException;
+namespace Mak001\FacebookFeed\Tests;
+
+use Mak001\FacebookFeed\FacebookFeed;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\FieldList;
 
 /**
  * Class FacebookFeedTest
@@ -9,7 +15,7 @@ class FacebookFeedTest extends SapphireTest
 {
 
     protected $extraDataObjects = array(
-        'FacebookFeedTest_Object'
+        FacebookFeedTest_Object::class
     );
 
     public function setUp()
@@ -19,9 +25,9 @@ class FacebookFeedTest extends SapphireTest
         $app_secret = getenv('app_secret');
         $default_access_token = getenv('default_access_token');
 
-        Config::inst()->update('FacebookFeed', 'app_id', $app_id);
-        Config::inst()->update('FacebookFeed', 'app_secret', $app_secret);
-        Config::inst()->update('FacebookFeed', 'default_access_token', $default_access_token);
+        Config::modify()->set(FacebookFeed::class, 'app_id', $app_id);
+        Config::modify()->set(FacebookFeed::class, 'app_secret', $app_secret);
+        Config::modify()->set(FacebookFeed::class, 'default_access_token', $default_access_token);
     }
 
     /**
@@ -29,9 +35,9 @@ class FacebookFeedTest extends SapphireTest
      */
     public function testUpdateCMSFields()
     {
-        $object = Injector::inst()->get('FacebookFeedTest_Object');
+        $object = Injector::inst()->get(FacebookFeedTest_Object::class);
         $fields = $object->getCMSFields();
-        $this->assertInstanceOf('FieldList', $fields);
+        $this->assertInstanceOf(FieldList::class, $fields);
     }
 
     /**
@@ -39,7 +45,7 @@ class FacebookFeedTest extends SapphireTest
      */
     public function testCreateFacebookHook()
     {
-        $object = Injector::inst()->get('FacebookFeedTest_Object');
+        $object = Injector::inst()->get(FacebookFeedTest_Object::class);
         $fb = $object->createFacebookHook();
         $this->assertInstanceOf('Facebook\Facebook', $fb);
     }
@@ -49,9 +55,8 @@ class FacebookFeedTest extends SapphireTest
      */
     public function testGetFacebookFeed()
     {
-        $object = Injector::inst()->get('FacebookFeedTest_Object');
+        $object = Injector::inst()->get(FacebookFeedTest_Object::class);
         $object->FacebookPageID = 'silverstripe';
-        $object->write();
 
         $posts = $object->getFacebookFeed()->toMap();
         $posts = $posts['Posts']->toArray();
@@ -67,12 +72,11 @@ class FacebookFeedTest extends SapphireTest
 
 
         $object->FacebookPageID = 'asdsdadasdasdasdad';
-        $object->write();
 
         $error = $object->getFacebookFeed()->toMap();
         $this->assertArrayHasKey('Error', $error);
 
-        Config::inst()->update('FacebookFeed', 'default_access_token', '');
+        Config::modify()->set(FacebookFeed::class, 'default_access_token', '');
         $error = $object->getFacebookFeed()->toMap();
         $this->assertArrayHasKey('Error', $error);
     }

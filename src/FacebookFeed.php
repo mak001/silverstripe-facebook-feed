@@ -1,15 +1,23 @@
 <?php
 
+namespace Mak001\FacebookFeed;
+
 use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\View\ArrayData;
 
 /**
  * Class FacebookFeed
  */
 class FacebookFeed extends DataExtension
 {
-    public static $db = array(
+    private static $db = array(
         'FacebookPageID' => 'Varchar(255)'
     );
 
@@ -23,9 +31,9 @@ class FacebookFeed extends DataExtension
 
     public function createFacebookHook()
     {
-        $app_id = Config::inst()->get('FacebookFeed', 'app_id');
-        $app_secret = Config::inst()->get('FacebookFeed', 'app_secret');
-        $default_access_token = Config::inst()->get('FacebookFeed', 'default_access_token');
+        $app_id = Config::inst()->get(FacebookFeed::class, 'app_id');
+        $app_secret = Config::inst()->get(FacebookFeed::class, 'app_secret');
+        $default_access_token = Config::inst()->get(FacebookFeed::class, 'default_access_token');
 
         return new Facebook([
             'app_id' => $app_id,
@@ -38,8 +46,13 @@ class FacebookFeed extends DataExtension
     public function getFacebookFeed($limit = 0)
     {
         if ($limit === 0) {
-            $limit = Config::inst()->get('FacebookFeed', 'defaultLimit');
+            $limit = Config::inst()->get(FacebookFeed::class, 'defaultLimit');
         }
+
+        if (!$limit) {
+            $limit = 2;
+        }
+
         $fb = $this->createFacebookHook();
 
         try {

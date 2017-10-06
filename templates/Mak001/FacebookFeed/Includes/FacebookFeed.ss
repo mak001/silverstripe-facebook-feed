@@ -10,7 +10,7 @@
 			<% if $Image %>
 				<img src="$Image" class="facebook-post-image" />
 			<% end_if %>
-			<p class="facebook-post-content">$Content</p>
+			<p class="facebook-post-content">$Content.RAW</p>
 			<a href="$Link" target="_blank">Read More</a>
 		</div>
 	<% end_loop %>

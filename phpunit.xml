@@ -1,21 +1,14 @@
-<phpunit bootstrap="../framework/tests/bootstrap.php" colors="true">
+<phpunit bootstrap="cms/tests/bootstrap.php" colors="true">
+	<testsuite name="facebookfeed">
+		<directory>tests</directory>
+	</testsuite>
 
-    <testsuite name="Default">
-        <directory>tests</directory>
-    </testsuite>
-
-    <listeners>
-        <listener class="SS_TestListener" file="../framework/dev/TestListener.php"/>
-    </listeners>
-
-    <groups>
-        <exclude>
-            <group>sanitychecks</group>
-        </exclude>
-    </groups>
-    <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">code</directory>
-        </whitelist>
-    </filter>
+	<filter>
+		<whitelist addUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">src/</directory>
+			<exclude>
+				<directory suffix=".php">tests/</directory>
+			</exclude>
+		</whitelist>
+	</filter>
 </phpunit>

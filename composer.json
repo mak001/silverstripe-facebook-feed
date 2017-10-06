@@ -6,7 +6,7 @@
 		"facebook",
 		"facebook feed"
 	],
-	"type": "silverstripe-module",
+	"type": "silverstripe-vendormodule",
 	"license": "BSD-3-Clause",
 	"authors": [
 		{
@@ -16,14 +16,30 @@
 		}
 	],
 	"require": {
-		"silverstripe/framework": "^3.4",
-		"silverstripe/cms": "^3.4",
+		"silverstripe/framework": "^4.0",
+		"silverstripe/cms": "^4.0",
 		"facebook/graph-sdk": "^5.6"
 	},
+	"require-dev": {
+		"phpunit/PHPUnit": "^5.7",
+		"squizlabs/php_codesniffer": "*"
+	},
 	"extra": {
-		"installer-name": "facebook-feed",
 		"branch-alias": {
-			"dev-master": "1.0.x-dev"
+			"1.0": "1.0.x-dev",
+			"dev-master": "2.0.x-dev"
 		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Mak001\\FacebookFeed\\": "src/",
+			"Mak001\\FacebookFeed\\Tests\\": "tests/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"scripts": {
+		"lint": "vendor/bin/phpcs src/ tests/",
+		"lint-clean": "vendor/bin/phpcbf src/ tests/"
 	}
 }
