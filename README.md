@@ -30,6 +30,14 @@ Mak001\FacebookFeed\FacebookFeed:
   defaultLimit: 2
 ```
 
-## Maintainer Contact
+Apply the data extension to the page type you want to use the feed on in the config.yml
+```yml
+Page:
+  extensions:
+    - Mak001\FacebookFeed\FacebookFeed
+```
 
- *  [mak001](http://www.matthewkoerber.com) (<mak001001@gmail.com>)
+Finally include the template in the layout
+```html
+<% include Mak001/FacebookFeed/FacebookFeed %>
+```
