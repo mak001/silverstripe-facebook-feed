@@ -37,7 +37,9 @@ Page:
     - Mak001\FacebookFeed\FacebookFeed
 ```
 
-Finally include the template in the layout
+Include the template in the layout
 ```html
 <% include Mak001/FacebookFeed/FacebookFeed %>
 ```
+
+In the CMS fill out the `Facebook Page ID` field on the DataObject or Page the extension is appiled to.
